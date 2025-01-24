@@ -1,8 +1,8 @@
-# AI-AGENT-SERVICE
+# BAISHI AI AGENT DATA PROCESSOR SERVICE
 
 ## Introduction
 
-AI-Agent-Service is a modular, scalable service designed to process game data for various games such as 8-ball pool, chess, and others. The service ingests raw game data, processes it to extract insights, and stores it in a MongoDB database for further analysis or use.
+BAISHI AI AGENT DATA PROCESSOR SERVICE is a modular, scalable service designed to process game data for various games such as 8-ball pool, chess, and others. The service ingests raw game data, processes it to extract insights, and stores it in a MongoDB database for further analysis or use.
 
 This service is built with Python and leverages Flask for the API, Pydantic for schema validation, and MongoDB for data storage. It is highly extensible, allowing developers to easily add support for new games by defining game-specific models and processors.
 
