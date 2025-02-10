@@ -60,15 +60,6 @@ def verbose(self, message, *args, **kwargs):
 
 logging.Logger.verbose = verbose
 
-# Example usage of different logging levels
-if __name__ == "__main__":
-    logger.info("This is an info message.")
-    logger.debug("This is a debug message.")
-    logger.error("This is an error message.")
-    logger.warning("This is a warning message.")
-    logger.verbose("This is a verbose message.")
-    logger.critical("This is a critical message.")
-
 # Structured logging for external systems
 try:
     import json
