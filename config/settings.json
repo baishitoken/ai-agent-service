@@ -1,0 +1,180 @@
+{
+    "MONGODB_URI": "mongodb://localhost:27017/",
+    "DATABASE_NAME": "game_database",
+    "SECRET_KEY": "your-secret-key",
+    "DEBUG": true,
+    "BLACKJACK_BETTING_LIMIT": 1000,
+    "CHESS_RATING_LIMIT": 2400,
+    "EIGHTBALL_FOUL_LIMIT": 5,
+    "LOG_LEVEL": "INFO",
+    "TIMEOUT": 30,
+    "API_KEY": null,
+    
+    "GAME_MODES": {
+      "BLACKJACK": "standard",
+      "CHESS": "classic",
+      "EIGHTBALL": "standard",
+      "BLACKJACK_TOURNAMENT": "tournament_mode",
+      "CHESS_RAPID": "rapid",
+      "EIGHTBALL_SPEED": "speed"
+    },
+    
+    "RATING_THRESHOLDS": {
+      "BEGINNER": 1200,
+      "INTERMEDIATE": 1600,
+      "ADVANCED": 2000,
+      "EXPERT": 2400
+    },
+    
+    "MAX_GAMES": 1000,
+    
+    "GAME_STATISTICS": {
+      "BLACKJACK": {
+        "total_bets": 50000,
+        "total_blackjacks": 120,
+        "total_busts": 50,
+        "total_win_streaks": 35
+      },
+      "CHESS": {
+        "total_games": 1500,
+        "total_checkmates": 500,
+        "total_stalemates": 50,
+        "total_draws": 200
+      },
+      "EIGHTBALL": {
+        "total_fouls": 200,
+        "total_games_played": 700,
+        "total_walls_hit": 150
+      }
+    },
+  
+    "CACHE_SETTINGS": {
+      "CACHE_ENABLED": true,
+      "CACHE_TIMEOUT": 300,
+      "CACHE_MAX_ITEMS": 10000,
+      "CACHE_EVICTION_POLICY": "LRU"  # Least Recently Used eviction policy
+    },
+    
+    "MATCHMAKING": {
+      "BLACKJACK": {
+        "MAX_BET_RANGE": [50, 1000],
+        "MIN_PLAYERS": 2,
+        "MAX_PLAYERS": 6
+      },
+      "CHESS": {
+        "TIME_LIMITS": ["5m", "10m", "15m"],
+        "MIN_RATING_DIFFERENCE": 200,
+        "MATCHMAKING_MODE": "ELO"
+      },
+      "EIGHTBALL": {
+        "MIN_PLAYERS": 2,
+        "MAX_PLAYERS": 4,
+        "GAME_MODE": "STANDARD"
+      }
+    },
+  
+    "NOTIFICATIONS": {
+      "EMAIL_ENABLED": true,
+      "SMS_ENABLED": false,
+      "PUSH_NOTIFICATION_ENABLED": true,
+      "EMAIL_SMTP_SERVER": "smtp.example.com",
+      "EMAIL_SMTP_PORT": 587,
+      "EMAIL_FROM": "no-reply@example.com"
+    },
+    
+    "USER_PREFERENCES": {
+      "MAX_PLAYERS_PER_GAME": 4,
+      "ENABLE_PLAYER_PROFILE": true,
+      "SHOW_PLAYER_RANK": true,
+      "ENABLE_STATS_TRACKING": true,
+      "ALLOW_FRIEND_REQUESTS": true
+    },
+    
+    "AI_SETTINGS": {
+      "ENABLE_AI_OPPONENTS": true,
+      "AI_DIFFICULTY": "medium",
+      "AI_BLACKJACK_STRATEGY": "basic",
+      "AI_CHESS_OPENING": "Ruy Lopez",
+      "AI_EIGHTBALL_STRATEGY": "offensive"
+    },
+    
+    "GAME_ACHIEVEMENTS": {
+      "BLACKJACK": {
+        "ACHIEVEMENT_1": "Win 10 consecutive games",
+        "ACHIEVEMENT_2": "Hit blackjack 50 times"
+      },
+      "CHESS": {
+        "ACHIEVEMENT_1": "Win a game with only a king",
+        "ACHIEVEMENT_2": "Achieve a checkmate in under 20 moves"
+      },
+      "EIGHTBALL": {
+        "ACHIEVEMENT_1": "Clear the table in under 2 minutes",
+        "ACHIEVEMENT_2": "Pot 8 balls in a single shot"
+      }
+    },
+    
+    "GAME_BOT": {
+      "BLACKJACK": {
+        "BOT_ENABLED": true,
+        "BOT_STRATEGY": "random",
+        "BOT_SKILL_LEVEL": 3
+      },
+      "CHESS": {
+        "BOT_ENABLED": true,
+        "BOT_STRATEGY": "aggressive",
+        "BOT_SKILL_LEVEL": 5
+      },
+      "EIGHTBALL": {
+        "BOT_ENABLED": true,
+        "BOT_STRATEGY": "offensive",
+        "BOT_SKILL_LEVEL": 4
+      }
+    },
+  
+    "PLAYER_PROFILE": {
+      "ENABLE_AVATAR_UPLOAD": true,
+      "MAX_AVATAR_SIZE": 1024,
+      "PROFILE_VISIBILITY": "public"  # Options: 'public', 'friends_only', 'private'
+    },
+  
+    "ADVANCED_GAME_SETTINGS": {
+      "BLACKJACK": {
+        "ENABLE_SPLITS": true,
+        "MAX_SPLITS": 3,
+        "DOUBLE_DOWN_ALLOWED": true
+      },
+      "CHESS": {
+        "ENABLE_CASTLING": true,
+        "ENABLE_EN_PASSANT": true
+      },
+      "EIGHTBALL": {
+        "ALLOW_BANK_SHOTS": true,
+        "ENABLE_CUE_SPIN": true
+      }
+    },
+    
+    "API_LIMITS": {
+      "MAX_REQUESTS_PER_HOUR": 1000,
+      "MAX_REQUESTS_PER_DAY": 10000,
+      "RATE_LIMIT_ENABLED": true
+    },
+    
+    "THIRD_PARTY_INTEGRATIONS": {
+      "PAYMENT_GATEWAY": {
+        "ENABLE_PAYPAL": true,
+        "ENABLE_STRIPE": false
+      },
+      "SOCIAL_LOGINS": {
+        "ENABLE_FACEBOOK_LOGIN": true,
+        "ENABLE_GOOGLE_LOGIN": true,
+        "ENABLE_TWITTER_LOGIN": false
+      }
+    },
+    
+    "DEVELOPMENT_TOOLS": {
+      "ENABLE_UNIT_TESTING": true,
+      "ENABLE_API_TESTING": true,
+      "ENABLE_DEBUG_MODE": true
+    }
+  }
+  
