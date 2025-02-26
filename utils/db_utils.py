@@ -12,12 +12,26 @@ def get_db_connection():
     return MongoClient(connection_string)
 
 def store_processed_data(data, game):
-    """Store the processed game data in the database."""
+    """Store the processed game data in the database, with additional analytics for 8-ball."""
     try:
         client = get_db_connection()
         db = client[Config.DATABASE_NAME]
         collection_name = f"{game}_game_data"
         collection = db[collection_name]
+
+        # If the game is 8-ball, update the data with extra analytics fields
+        if game.lower() == "eight_ball":
+            if isinstance(data, dict):
+                data.setdefault("shot_accuracy_trends", [])
+                data.setdefault("win_percentage", 0.0)
+                data.setdefault("foul_rate", 0.0)
+                data.setdefault("ai_behavior_adjustments", {})
+            elif isinstance(data, list):
+                for doc in data:
+                    doc.setdefault("shot_accuracy_trends", [])
+                    doc.setdefault("win_percentage", 0.0)
+                    doc.setdefault("foul_rate", 0.0)
+                    doc.setdefault("ai_behavior_adjustments", {})
 
         if isinstance(data, list):
             logger.info("Inserting multiple documents into collection: %s", collection_name)
@@ -33,7 +47,7 @@ def store_processed_data(data, game):
     finally:
         client.close()
         logger.info("Database connection closed.")
-
+        
 def get_collection(game):
     """Get the collection for the specific game."""
     client = get_db_connection()
