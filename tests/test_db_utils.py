@@ -1,8 +1,12 @@
 import unittest
 from unittest.mock import patch, MagicMock
+from config import Config
 from utils.db_utils import store_processed_data
 
 class TestDbUtils(unittest.TestCase):
+    def test_flask_port_config(self):
+        self.assertEqual(Config.FLASK_PORT, 5000)
+
     @patch("utils.db_utils.get_db_connection")
     def test_store_processed_data_single(self, mock_get_db_connection):
         mock_client = MagicMock()

@@ -11,6 +11,11 @@ class TurnData(BaseModel):
     balls_potted: List[int]
     walls_hit: List[int]
 
+class GameHistory(BaseModel):
+    result: str
+    opponent: str
+    score_diff: int
+    timestamp: int
 
 class PlayerData(BaseModel):
     username: str
@@ -23,7 +28,7 @@ class PlayerData(BaseModel):
     eightballs_potted: Optional[int] = Field(default=0, ge=0)
     favourite: Optional[str]
     game_data: List[TurnData]
-
+    game_history: List[GameHistory] = []
 
 class Game8BallPayload(BaseModel):
     game: str
