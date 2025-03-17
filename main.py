@@ -9,9 +9,21 @@ from config import Config
 from utils.logger import logger
 from pydantic import ValidationError
 from models import GamePayload
+from utils.middlewares.logging_middleware import logging_middleware
+from utils.middlewares.auth_middleware import auth_middleware
+from utils.middlewares.rate_limit_middleware import rate_limit_middleware
+from utils.middlewares.request_validation_middleware import request_validation_middleware
+from utils.middlewares.cors_middleware import cors_middleware
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS
+
+# Apply middlewares
+logging_middleware(app)
+auth_middleware(app)
+rate_limit_middleware(app)
+request_validation_middleware(app)
+cors_middleware(app)
 
 # Log the environment at startup
 logger.info(f"Starting application in {Config.ENV} environment")
