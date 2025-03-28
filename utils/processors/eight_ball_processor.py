@@ -1,4 +1,77 @@
 from utils.logger import logger
+import random
+
+class EightBallRLAgent:
+    """
+    RL agent.
+    Uses Q-learning to refine AI bot behavior.
+    """
+    def __init__(self):
+        self.q_table = {}
+        self.learning_rate = 0.1
+        self.discount_factor = 0.99
+        self.exploration_rate = 0.1
+        self.actions = ["aggressive_shot", "defensive_shot", "bank_shot", "combo_shot", "safety"]
+        self.memory = []
+
+    def get_state(self, player):
+        """
+        Get the state representation for the player.
+        """
+        return (
+            round(player.get("winRate", 0), 2),
+            round(player.get("pottingAccuracy", 0), 2),
+            round(player.get("averageFouls", 0), 2),
+        )
+
+    def choose_action(self, state):
+        """
+        Epsilon-greedy policy for choosing an action based on Q-values.
+        """
+        if random.random() < self.exploration_rate:
+            return random.choice(self.actions)
+        else:
+            return self.get_best_action(state)
+
+    def get_best_action(self, state):
+        """
+        Returns the action with the highest Q-value for the given state.
+        """
+        if state not in self.q_table:
+            self.q_table[state] = {a: 0.0 for a in self.actions}
+        best_act = max(self.q_table[state], key=self.q_table[state].get)
+        return best_act
+
+    def observe(self, state, action, reward, next_state):
+        """
+        Store experience in memory for batch or incremental updates.
+        """
+        self.memory.append((state, action, reward, next_state))
+
+    def update_q_value(self, state, action, reward, next_state):
+        """
+        Update Q-table using the Bellman equation for Q-learning.
+        """
+        if state not in self.q_table:
+            self.q_table[state] = {a: 0.0 for a in self.actions}
+        if next_state not in self.q_table:
+            self.q_table[next_state] = {a: 0.0 for a in self.actions}
+
+        current_q = self.q_table[state][action]
+        max_next_q = max(self.q_table[next_state].values())
+        new_q = current_q + self.learning_rate * (reward + self.discount_factor * max_next_q - current_q)
+        self.q_table[state][action] = new_q
+
+    def train(self):
+        """
+        Train the agent on all stored experiences (simple approach).
+        """
+        for (state, action, reward, next_state) in self.memory:
+            self.update_q_value(state, action, reward, next_state)
+        self.memory = []
+
+eight_ball_rl_agent = EightBallRLAgent()
+
 
 def process_8ball_data(game_data):
     """Process game data specific to 8-ball pool."""
@@ -11,62 +84,61 @@ def process_8ball_data(game_data):
     for player in players:
         logger.info("Processing data for player: %s", player.get("username"))
 
-        # Calculate "firstTurn"
+        # Standard analysis
         determine_first_turn(player, players)
-
-        # Calculate win rate
         calculate_win_rate(player)
-
-        # Calculate ball potting accuracy
         calculate_potting_accuracy(player)
-
-        # Update stats with current game data
         update_game_data(player)
-
-        # Calculate fouls per game
         calculate_average_fouls(player)
-
-        # Calculate aggressive vs defensive shots
         calculate_shot_ratios(player)
-
-        # Determine most common ball hit
         determine_most_common_ball_hit(player)
-
-        # Analyze wall hits
         analyze_wall_hits(player)
-
-        # Identify streaks of successful pots
         identify_max_potting_streak(player)
-
-        # Advanced analysis: Positional heatmaps for cue ball positions
         analyze_cue_ball_position(player)
-
-        # Advanced analysis: Game phase analysis
         analyze_game_phases(player)
-
-        # Advanced analysis: Opponent-specific performance metrics
         analyze_opponent_performance(player, players)
-
-        # Analyze game history
         analyze_game_history(player)
-
-        # Streak analysis
         analyze_streaks(player)
-
-        # Analyze behavior trends
         analyze_behavior_trends(player)
-
-        # Additional analysis (e.g., shot accuracy trends)
         analyze_shot_accuracy_trends(player)
-
-        # Custom player stats (e.g., aggressive vs defensive tendencies)
         add_custom_player_stats(player)
+
+        refine_ai_bot(player)
 
         logger.debug("Calculated advanced stats for player %s: %s", player.get("username"), player)
 
     logger.info("Finished processing 8-ball data.")
     return players
 
+def refine_ai_bot(player):
+    """
+    A reinforcement learning function that refines an AI bot's 8-ball gameplay
+    by analyzing the player's past matches. The bot should improve shot selection
+    and decision-making over time.
+    """
+    current_state = eight_ball_rl_agent.get_state(player)
+
+    chosen_action = eight_ball_rl_agent.choose_action(current_state)
+
+    result = player.get("result", "")
+    if result == "win":
+        reward = 1.0
+    elif result == "loss":
+        reward = -0.5
+    else:
+        reward = 0.0
+
+    next_state = current_state
+
+    eight_ball_rl_agent.observe(current_state, chosen_action, reward, next_state)
+
+    eight_ball_rl_agent.train()
+
+    player["aiChosenAction"] = chosen_action
+    logger.debug(
+        "AI refined for player %s: state=%s, action=%s, reward=%.2f",
+        player.get("username"), current_state, chosen_action, reward
+    )
 
 def determine_first_turn(player, players):
     """Determine if the player took the first turn in the game."""
