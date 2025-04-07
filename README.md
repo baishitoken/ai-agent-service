@@ -2,27 +2,33 @@
 
 ## Introduction
 
-BAISHI AI AGENT DATA PROCESSOR SERVICE is a modular, scalable service designed to process game data for various games such as 8-ball pool, chess, and more. The service ingests raw game data, processes it to extract actionable insights, and stores the results in a MongoDB database for further analysis or integration into downstream applications.
+BAISHI AI AGENT DATA PROCESSOR SERVICE is a modular, scalable service designed to process game data for various games such as 8-ball pool, chess, and more. The service ingests raw game data, validates and processes it to extract actionable insights, and stores the results in MongoDB for further analysis or integration into downstream applications.
 
-Built with Python, the service leverages Flask for API endpoints and WebSocket communication, Pydantic for schema validation, and MongoDB for persistent storage. Additionally, advanced AI and ML modules have been integrated to provide predictive capabilities and refined analytics for gameplay improvement.
+Built with Python, the service leverages:
+
+- **Flask** for REST API endpoints and WebSocket communication
+- **Pydantic** for request/response schema validation
+- **MongoDB** for persistent storage
+- **TensorFlow & PyTorch** for AI/ML modules
+- **Scikit-Learn** for playstyle classification
 
 ---
 
 ## Features
 
-- **Game-Agnostic Architecture**: Supports multiple games with separate models and processors for each.
-- **Data Validation**: Uses Pydantic models to ensure that incoming payloads are clean and well-structured.
-- **MongoDB Integration**: Processes and stores game data efficiently in dedicated MongoDB collections.
-- **WebSocket Server**: Real-time communication with WebGL clients for shot trajectory processing.
-- **AI & Machine Learning**:
-  - **Reinforcement Learning**: A simple RL agent refines 8-ball shot selection based on game outcomes.
-  - **Neural Network Training**: An extensive model training pipeline using PyTorch for 8-ball gameplay prediction.
-  - **Playstyle Classification**: Uses Scikit-Learn to classify 8-ball players into Aggressive, Defensive, or Calculated playstyles.
-- **Post-Game Analysis**: Extracts post-game summaries, analyzes trends, and adjusts AI model parameters for future predictions.
-- **Spectator Mode**: An observation mode where the AI bot refines its strategy by observing five games before unlocking its full capabilities.
-- **Logging & Error Handling**: Extensive logging with Python’s `logging` module and robust error handling for easier debugging.
-- **Modular & Extensible Design**: Easily extend support for new games by adding Pydantic models and game-specific processors.
-- **Unit Testing**: Comprehensive test suite covering key components, ensuring code quality and reliability.
+- **Game-Agnostic Architecture**: Plug in new games via Pydantic models & processors
+- **Data Validation**: Strict schemas ensure clean, well-formed payloads
+- **MongoDB Integration**: Dedicated collections per game for efficient storage
+- **WebSocket Server**: Real-time shot trajectory processing for WebGL clients
+- **AI & ML Pipelines**
+  - **Reinforcement Learning**: Adaptive 8-ball shot selection agent
+  - **Neural Network Training**: PyTorch pipeline for shot outcome prediction
+  - **Playstyle Classification**: Aggressive, Defensive, Calculated via Scikit-Learn
+- **Post-Game Analysis**: Summary reports, trend detection, model parameter tuning
+- **Spectator Mode**: AI observes N games before unlocking full decision logic
+- **Logging & Error Handling**: Full tracing via `logging`, robust exception middleware
+- **Modular & Extensible**: Add new games by dropping in models + processors
+- **Unit Testing**: Coverage for core logic, data processing, and API endpoints
 
 ---
 
