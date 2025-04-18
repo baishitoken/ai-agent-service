@@ -1,0 +1,18 @@
+[
+  {
+    "address": "0xAbC123...7890",
+    "privateKey": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+    "address": "0xDeF456...1234",
+    "privateKey": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  {
+    "address": "0x123AbC...456DeF",
+    "privateKey": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  {
+    "address": "0x7890DeF...AbC123",
+    "privateKey": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "address", "name": "winner", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "Payout",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "winner", "type": "address" }
+    ],
+    "name": "payout",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]

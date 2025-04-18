@@ -1,0 +1,7 @@
+{
+  "rpcUrl": "https://gala-rpc.endpoint",
+  // Placeholder chain ID for Gala (replace with the real one)
+  "chainId": 1234,
+  // Private key for deployment – DO NOT COMMIT
+  "privateKey": "0xYOUR_PRIVATE_KEY_HERE"
+}

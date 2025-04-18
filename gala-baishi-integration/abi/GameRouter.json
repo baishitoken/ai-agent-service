@@ -1,0 +1,69 @@
+[
+  {
+    "inputs": [
+      { "internalType": "uint256",   "name": "_entryFee",       "type": "uint256" },
+      { "internalType": "address",   "name": "_rewardEngine",   "type": "address" },
+      { "internalType": "address",   "name": "_profileContract","type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "player",   "type": "address" },
+      { "indexed": false,"internalType": "uint256", "name": "amount",   "type": "uint256" }
+    ],
+    "name": "Deposited",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "matchId",  "type": "uint256" },
+      { "indexed": true, "internalType": "address", "name": "playerA",  "type": "address" },
+      { "indexed": true, "internalType": "address", "name": "playerB",  "type": "address" }
+    ],
+    "name": "MatchStarted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "matchId",  "type": "uint256" },
+      { "indexed": true, "internalType": "address", "name": "winner",   "type": "address" },
+      { "indexed": false,"internalType": "uint8",   "name": "scoreA",   "type": "uint8" },
+      { "indexed": false,"internalType": "uint8",   "name": "scoreB",   "type": "uint8" }
+    ],
+    "name": "MatchEnded",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "deposit",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_playerA", "type": "address" },
+      { "internalType": "address", "name": "_playerB", "type": "address" }
+    ],
+    "name": "startMatch",
+    "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_matchId", "type": "uint256" },
+      { "internalType": "uint8",   "name": "_scoreA",  "type": "uint8" },
+      { "internalType": "uint8",   "name": "_scoreB",  "type": "uint8" }
+    ],
+    "name": "endMatch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "matchId": 1,
+    "playerA": "0xAbC123...7890",
+    "playerB": "0xDeF456...1234",
+    "scoreA": 8,
+    "scoreB": 5,
+    "timestamp": 1683500000
+  },
+  {
+    "matchId": 2,
+    "playerA": "0x123AbC...456DeF",
+    "playerB": "0x7890DeF...AbC123",
+    "scoreA": 6,
+    "scoreB": 8,
+    "timestamp": 1683586400
+  },
+  {
+    "matchId": 3,
+    "playerA": "0xAbC123...7890",
+    "playerB": "0x123AbC...456DeF",
+    "scoreA": 8,
+    "scoreB": 7,
+    "timestamp": 1683672800
+  },
+  {
+    "matchId": 4,
+    "playerA": "0xDeF456...1234",
+    "playerB": "0x7890DeF...AbC123",
+    "scoreA": 4,
+    "scoreB": 8,
+    "timestamp": 1683759200
+  }
+]
